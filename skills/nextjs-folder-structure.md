@@ -1,3 +1,8 @@
+---
+name: nextjs-folder-structure
+description: Next.js App Router의 src/ 폴더 구조·배치·의존성 규칙을 정의한다. 새 페이지·컴포넌트 추가, 리팩터링, 코드 리뷰, 폴더 구조 정리 요청 시 사용한다.
+---
+
 # Next.js Folder Structure
 
 Next.js App Router 프로젝트의 `src/` 레이아웃과 폴더 규칙. 새 페이지·컴포넌트 추가, 리팩터링, 코드 리뷰 시 이 규칙을 따른다.

@@ -1,0 +1,7 @@
+# Track only the extension project.
+*
+
+!.gitignore
+!extension/
+!extension/**
+!README.md

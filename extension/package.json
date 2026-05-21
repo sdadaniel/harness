@@ -1,0 +1,176 @@
+{
+  "name": "agent-sync",
+  "displayName": "AgentSync",
+  "description": "Sync skills, agents, commands, and AGENTS.md from .harness/ to Cursor, Claude Code, and Codex",
+  "version": "0.1.6",
+  "publisher": "agentsync",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sdadaniel/harness.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "agentsync.initProject",
+        "title": "Init .harness in Project",
+        "category": "AgentSync",
+        "icon": "$(new-folder)"
+      },
+      {
+        "command": "agentsync.showPanel",
+        "title": "Show Panel",
+        "category": "AgentSync",
+        "icon": "$(layout-sidebar-left)"
+      },
+      {
+        "command": "agentsync.sync",
+        "title": "Sync Skills & Agents",
+        "category": "AgentSync",
+        "icon": "$(sync)"
+      },
+      {
+        "command": "agentsync.refresh",
+        "title": "Refresh",
+        "category": "AgentSync",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "agentsync.openItem",
+        "title": "Open",
+        "category": "AgentSync"
+      },
+      {
+        "command": "agentsync.toggleTarget",
+        "title": "Toggle Platform",
+        "category": "AgentSync"
+      },
+      {
+        "command": "agentsync.openSettingsTab",
+        "title": "Open Settings Tab",
+        "category": "AgentSync",
+        "icon": "$(open-preview)"
+      },
+      {
+        "command": "agentsync.openDocs",
+        "title": "Open Documentation",
+        "category": "AgentSync",
+        "icon": "$(book)"
+      }
+    ],
+    "configuration": {
+      "title": "AgentSync",
+      "properties": {
+        "agentsync.harnessRoot": {
+          "type": "string",
+          "default": "",
+          "description": "Project root containing .harness/. Empty = workspace folder."
+        },
+        "agentsync.projectRoot": {
+          "type": "string",
+          "default": "",
+          "description": "Project root for installs. Empty = first workspace folder."
+        },
+        "agentsync.scope": {
+          "type": "string",
+          "enum": [
+            "project",
+            "user"
+          ],
+          "default": "project",
+          "description": "Install skills/agents in the project or user home directory."
+        },
+        "agentsync.targets.cursor": {
+          "type": "boolean",
+          "default": true,
+          "description": "Sync to Cursor (.cursor/skills, .cursor/agents)."
+        },
+        "agentsync.targets.claude": {
+          "type": "boolean",
+          "default": true,
+          "description": "Sync to Claude Code (.claude/skills, .claude/agents)."
+        },
+        "agentsync.targets.codex": {
+          "type": "boolean",
+          "default": true,
+          "description": "Sync to Codex (.agents/skills, .codex/agents)."
+        }
+      }
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "agentsync",
+          "title": "AgentSync",
+          "icon": "media/agentsync.svg"
+        }
+      ]
+    },
+    "views": {
+      "agentsync": [
+        {
+          "id": "agentsync.settings",
+          "name": "Settings",
+          "type": "webview"
+        },
+        {
+          "id": "agentsync.registrations",
+          "name": "Installations"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "agentsync.registrations",
+        "contents": "Each project defines skills/agents in `.harness/`.\n[Init .harness](command:agentsync.initProject)\n[Sync Now](command:agentsync.sync)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "agentsync.openSettingsTab",
+          "when": "view == agentsync.settings",
+          "group": "navigation@1"
+        },
+        {
+          "command": "agentsync.openDocs",
+          "when": "view == agentsync.settings",
+          "group": "navigation@2"
+        },
+        {
+          "command": "agentsync.sync",
+          "when": "view == agentsync.registrations",
+          "group": "navigation@1"
+        },
+        {
+          "command": "agentsync.refresh",
+          "when": "view == agentsync.registrations",
+          "group": "navigation@2"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "bundle-script": "rm -rf bundled && mkdir -p bundled/script && cp scripts/sync.sh bundled/script/ && chmod +x bundled/script/sync.sh",
+    "vscode:prepublish": "npm run bundle-script && npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "npm run bundle-script && vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.85.0",
+    "@vscode/vsce": "^3.9.1",
+    "typescript": "^5.3.3"
+  }
+}

@@ -1,4 +1,4 @@
-# Harness Sync
+# HSync
 
 `.harness/`에 정의한 skills, agents, commands, root instructions를 Cursor, Claude Code, Codex에 sync하는 VS Code/Cursor extension입니다.
 
@@ -32,24 +32,24 @@
 
 ## VS Code settings
 
-Settings → **Harness Sync** (`harnessSync.*`)
+Settings → **HSync** (`hSync.*`)
 
 | Setting | Default | Description |
 |---------|---------|-------------|
-| `harnessSync.projectRoot` | workspace folder | sync 대상 프로젝트 루트 |
-| `harnessSync.harnessRoot` | same as project | `.harness/`가 있는 루트 (비우면 project root) |
-| `harnessSync.scope` | `project` | `project` = 프로젝트 폴더, `user` = 홈 디렉터리 |
-| `harnessSync.targets.cursor` | `true` | Cursor sync 포함 여부 |
-| `harnessSync.targets.claude` | `true` | Claude Code sync 포함 여부 |
-| `harnessSync.targets.codex` | `true` | Codex sync 포함 여부 |
+| `hSync.projectRoot` | workspace folder | sync 대상 프로젝트 루트 |
+| `hSync.harnessRoot` | same as project | `.harness/`가 있는 루트 (비우면 project root) |
+| `hSync.scope` | `project` | `project` = 프로젝트 폴더, `user` = 홈 디렉터리 |
+| `hSync.targets.cursor` | `true` | Cursor sync 포함 여부 |
+| `hSync.targets.claude` | `true` | Claude Code sync 포함 여부 |
+| `hSync.targets.codex` | `true` | Codex sync 포함 여부 |
 
 ## Commands
 
 | Command | Description |
 |---------|-------------|
-| **Harness Sync: Open Settings Tab** | Settings UI 열기 |
-| **Harness Sync: Init .harness in Project** | `.harness/` 생성 |
-| **Harness Sync: Sync Skills & Agents** | ON인 플랫폼 전체 sync |
-| **Harness Sync: Open Documentation** | 이 문서 열기 |
+| **HSync: Open Settings Tab** | Settings UI 열기 |
+| **HSync: Init .harness in Project** | `.harness/` 생성 |
+| **HSync: Sync Skills & Agents** | ON인 플랫폼 전체 sync |
+| **HSync: Open Documentation** | 이 문서 열기 |
 
 Settings UI에서 **Docs** 버튼으로도 이 문서를 열 수 있습니다.

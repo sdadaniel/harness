@@ -18,38 +18,38 @@ export function activate(context: vscode.ExtensionContext): void {
     vscode.StatusBarAlignment.Left,
     100
   );
-  statusItem.text = "$(symbol-structure) Harness Sync";
-  statusItem.tooltip = "Open Harness Sync settings";
-  statusItem.command = "harnessSync.openSettingsTab";
+  statusItem.text = "$(symbol-structure) HSync";
+  statusItem.tooltip = "Open HSync settings";
+  statusItem.command = "hSync.openSettingsTab";
   statusItem.show();
 
   context.subscriptions.push(
     statusItem,
     vscode.window.registerTreeDataProvider(
-      "harnessSync.registrations",
+      "hSync.registrations",
       treeProvider
     ),
     vscode.window.registerWebviewViewProvider(
       SettingsWebviewProvider.viewType,
       settingsProvider
     ),
-    vscode.commands.registerCommand("harnessSync.sync", async () => {
+    vscode.commands.registerCommand("hSync.sync", async () => {
       try {
         const config = getHarnessConfiguration(context);
         await runHarnessSync(config);
         treeProvider.refresh();
         settingsProvider.refresh();
         vscode.window.showInformationMessage(
-          "Harness Sync completed."
+          "HSync completed."
         );
       } catch (err) {
         const message =
           err instanceof Error ? err.message : String(err);
-        vscode.window.showErrorMessage(`Harness Sync failed: ${message}`);
+        vscode.window.showErrorMessage(`HSync failed: ${message}`);
       }
     }),
     vscode.commands.registerCommand(
-      "harnessSync.syncTarget",
+      "hSync.syncTarget",
       async (platform: Platform) => {
         try {
           const config = getHarnessConfiguration(context);
@@ -61,27 +61,27 @@ export function activate(context: vscode.ExtensionContext): void {
         } catch (err) {
           const message =
             err instanceof Error ? err.message : String(err);
-          vscode.window.showErrorMessage(`Harness Sync failed: ${message}`);
+          vscode.window.showErrorMessage(`HSync failed: ${message}`);
         }
       }
     ),
-    vscode.commands.registerCommand("harnessSync.refresh", () => {
+    vscode.commands.registerCommand("hSync.refresh", () => {
       treeProvider.refresh();
       settingsProvider.refresh();
     }),
-    vscode.commands.registerCommand("harnessSync.showPanel", async () => {
-      await vscode.commands.executeCommand("workbench.view.extension.harnessSync");
+    vscode.commands.registerCommand("hSync.showPanel", async () => {
+      await vscode.commands.executeCommand("workbench.view.extension.hSync");
     }),
-    vscode.commands.registerCommand("harnessSync.openSettingsTab", () => {
+    vscode.commands.registerCommand("hSync.openSettingsTab", () => {
       openHarnessSettingsPanel(context, () => {
         treeProvider.refresh();
         settingsProvider.refresh();
       });
     }),
-    vscode.commands.registerCommand("harnessSync.openDocs", () => {
+    vscode.commands.registerCommand("hSync.openDocs", () => {
       openHarnessDocs(context);
     }),
-    vscode.commands.registerCommand("harnessSync.initProject", async () => {
+    vscode.commands.registerCommand("hSync.initProject", async () => {
       try {
         const config = getHarnessConfiguration(context);
         if (!config.projectRoot) {
@@ -107,10 +107,10 @@ export function activate(context: vscode.ExtensionContext): void {
         );
       } catch (err) {
         const message = err instanceof Error ? err.message : String(err);
-        vscode.window.showErrorMessage(`Harness Sync init failed: ${message}`);
+        vscode.window.showErrorMessage(`HSync init failed: ${message}`);
       }
     }),
-    vscode.commands.registerCommand("harnessSync.openItem", async (filePath: string) => {
+    vscode.commands.registerCommand("hSync.openItem", async (filePath: string) => {
       if (!filePath) {
         return;
       }

@@ -1,8 +1,8 @@
-# Harness Sync
+# HSync
 
 `.harness/`에 정의한 skills, agents, commands, root instructions를 Cursor, Claude Code, Codex에 sync하는 도구입니다.
 
-Extension 문서는 [`extension/README.md`](extension/README.md)에 포함되어 있으며, 설치된 extension에서는 **Harness Sync → Docs** 또는 Command Palette **Harness Sync: Open Documentation**으로 볼 수 있습니다.
+Extension 문서는 [`extension/README.md`](extension/README.md)에 포함되어 있으며, 설치된 extension에서는 **HSync → Docs** 또는 Command Palette **HSync: Open Documentation**으로 볼 수 있습니다.
 
 ## Project layout
 
@@ -34,13 +34,13 @@ Extension 문서는 [`extension/README.md`](extension/README.md)에 포함되어
 
 ## VS Code settings
 
-Settings → **Harness Sync** (`harnessSync.*`)
+Settings → **HSync** (`hSync.*`)
 
 | Setting | Default | Description |
 |---------|---------|-------------|
-| `harnessSync.projectRoot` | workspace folder | sync 대상 프로젝트 루트 |
-| `harnessSync.harnessRoot` | same as project | `.harness/`가 있는 루트 (비우면 project root) |
-| `harnessSync.scope` | `project` | `project` = 프로젝트 폴더, `user` = 홈 디렉터리 |
-| `harnessSync.targets.cursor` | `true` | Cursor sync 포함 여부 |
-| `harnessSync.targets.claude` | `true` | Claude Code sync 포함 여부 |
-| `harnessSync.targets.codex` | `true` | Codex sync 포함 여부 |
+| `hSync.projectRoot` | workspace folder | sync 대상 프로젝트 루트 |
+| `hSync.harnessRoot` | same as project | `.harness/`가 있는 루트 (비우면 project root) |
+| `hSync.scope` | `project` | `project` = 프로젝트 폴더, `user` = 홈 디렉터리 |
+| `hSync.targets.cursor` | `true` | Cursor sync 포함 여부 |
+| `hSync.targets.claude` | `true` | Claude Code sync 포함 여부 |
+| `hSync.targets.codex` | `true` | Codex sync 포함 여부 |

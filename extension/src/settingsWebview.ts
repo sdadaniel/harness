@@ -543,20 +543,20 @@ function bindSettingsWebview(
       onRefresh?.();
     }
     if (msg.type === "sync") {
-      await vscode.commands.executeCommand("harnessSync.sync");
+      await vscode.commands.executeCommand("hSync.sync");
       postSettingsState(webview, context);
       onRefresh?.();
     }
     if (msg.type === "syncTarget" && typeof msg.platform === "string") {
       await vscode.commands.executeCommand(
-        "harnessSync.syncTarget",
+        "hSync.syncTarget",
         msg.platform
       );
       postSettingsState(webview, context);
       onRefresh?.();
     }
     if (msg.type === "init") {
-      await vscode.commands.executeCommand("harnessSync.initProject");
+      await vscode.commands.executeCommand("hSync.initProject");
       postSettingsState(webview, context);
       onRefresh?.();
     }
@@ -621,8 +621,8 @@ export function openHarnessSettingsPanel(
   }
 
   settingsPanel = vscode.window.createWebviewPanel(
-    "harnessSync.settingsPanel",
-    "Harness Sync Settings",
+    "hSync.settingsPanel",
+    "HSync Settings",
     vscode.ViewColumn.One,
     {
       enableScripts: true,
@@ -641,7 +641,7 @@ export function openHarnessSettingsPanel(
 }
 
 export class SettingsWebviewProvider implements vscode.WebviewViewProvider {
-  public static readonly viewType = "harnessSync.settings";
+  public static readonly viewType = "hSync.settings";
 
   private view?: vscode.WebviewView;
 

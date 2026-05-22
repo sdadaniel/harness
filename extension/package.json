@@ -2,8 +2,13 @@
   "name": "hsync",
   "displayName": "HSync",
   "description": "Sync skills, agents, commands, and AGENTS.md from .harness/ to Cursor, Claude Code, and Codex",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "sdadaniel",
+  "icon": "media/icon.png",
+  "galleryBanner": {
+    "color": "#1a1a1a",
+    "theme": "dark"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/sdadaniel/harness.git"

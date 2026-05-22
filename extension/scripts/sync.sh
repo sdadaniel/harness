@@ -15,7 +15,7 @@ Sources:
   <harness>/.harness/AGENTS.md       → root agent instructions
 
 Options:
-  --harness DIR     Project root containing .harness/ (required when run from AgentSync)
+  --harness DIR     Project root containing .harness/ (required when run from Harness Sync)
   --project DIR     Project root — install targets (default: same as --harness)
   --scope SCOPE     project | user (default: project)
   --kind KIND       skills | agents | commands | root | all (default: all)
@@ -611,7 +611,7 @@ sync_root() {
   echo "Registered root document."
 }
 
-echo "AgentSync: ${HARNESS_ROOT}"
+echo "Harness Sync: ${HARNESS_ROOT}"
 echo "Project: ${PROJECT_ROOT}"
 echo "Scope:   ${SCOPE}"
 echo "Kind:    ${KIND}"

@@ -18,7 +18,7 @@ function validateSyncPreconditions(config: HarnessConfig): void {
 
   if (!hasHarnessSource(config)) {
     throw new Error(
-      "프로젝트에 .harness/ 폴더가 없습니다. AgentSync: Init .harness in Project를 실행하세요."
+      "프로젝트에 .harness/ 폴더가 없습니다. Harness Sync: Init .harness in Project를 실행하세요."
     );
   }
 
@@ -39,7 +39,7 @@ async function executeSync(
 ): Promise<void> {
   const projectRoot = config.projectRoot;
   const title =
-    targets.length === 1 ? `AgentSync (${targets[0]})` : "AgentSync";
+    targets.length === 1 ? `Harness Sync (${targets[0]})` : "Harness Sync";
 
   await vscode.window.withProgress(
     {

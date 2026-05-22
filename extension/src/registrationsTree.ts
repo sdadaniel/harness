@@ -75,7 +75,7 @@ export class RegistrationsTreeProvider
         item.iconPath = new vscode.ThemeIcon("folder-library");
         if (!hasHarnessSource(this.config())) {
           item.command = {
-            command: "agentsync.initProject",
+            command: "harnessSync.initProject",
             title: "Init .harness",
           };
         }
@@ -103,7 +103,7 @@ export class RegistrationsTreeProvider
         item.description = source.rootDocument ? "defined" : "missing";
         if (source.rootDocument) {
           item.command = {
-            command: "agentsync.openItem",
+            command: "harnessSync.openItem",
             title: "Open",
             arguments: [source.rootDocument.filePath],
           };
@@ -119,7 +119,7 @@ export class RegistrationsTreeProvider
         item.description = truncate(element.item.description);
         item.tooltip = element.item.description ?? element.item.filePath;
         item.command = {
-          command: "agentsync.openItem",
+          command: "harnessSync.openItem",
           title: "Open",
           arguments: [element.item.filePath],
         };
@@ -176,7 +176,7 @@ export class RegistrationsTreeProvider
         if (regs.rootDocument) {
           item.description = "installed";
           item.command = {
-            command: "agentsync.openItem",
+            command: "harnessSync.openItem",
             title: "Open",
             arguments: [regs.rootDocument.filePath],
           };
@@ -203,7 +203,7 @@ export class RegistrationsTreeProvider
           .filter(Boolean)
           .join("\n");
         item.command = {
-          command: "agentsync.openItem",
+          command: "harnessSync.openItem",
           title: "Open",
           arguments: [element.item.filePath],
         };

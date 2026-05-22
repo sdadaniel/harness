@@ -543,20 +543,20 @@ function bindSettingsWebview(
       onRefresh?.();
     }
     if (msg.type === "sync") {
-      await vscode.commands.executeCommand("agentsync.sync");
+      await vscode.commands.executeCommand("harnessSync.sync");
       postSettingsState(webview, context);
       onRefresh?.();
     }
     if (msg.type === "syncTarget" && typeof msg.platform === "string") {
       await vscode.commands.executeCommand(
-        "agentsync.syncTarget",
+        "harnessSync.syncTarget",
         msg.platform
       );
       postSettingsState(webview, context);
       onRefresh?.();
     }
     if (msg.type === "init") {
-      await vscode.commands.executeCommand("agentsync.initProject");
+      await vscode.commands.executeCommand("harnessSync.initProject");
       postSettingsState(webview, context);
       onRefresh?.();
     }
@@ -621,8 +621,8 @@ export function openHarnessSettingsPanel(
   }
 
   settingsPanel = vscode.window.createWebviewPanel(
-    "agentsync.settingsPanel",
-    "AgentSync Settings",
+    "harnessSync.settingsPanel",
+    "Harness Sync Settings",
     vscode.ViewColumn.One,
     {
       enableScripts: true,
@@ -641,7 +641,7 @@ export function openHarnessSettingsPanel(
 }
 
 export class SettingsWebviewProvider implements vscode.WebviewViewProvider {
-  public static readonly viewType = "agentsync.settings";
+  public static readonly viewType = "harnessSync.settings";
 
   private view?: vscode.WebviewView;
 

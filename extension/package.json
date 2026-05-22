@@ -1,9 +1,9 @@
 {
-  "name": "agent-sync",
-  "displayName": "AgentSync",
+  "name": "harness-sync",
+  "displayName": "Harness Sync",
   "description": "Sync skills, agents, commands, and AGENTS.md from .harness/ to Cursor, Claude Code, and Codex",
   "version": "0.1.0",
-  "publisher": "agentsync",
+  "publisher": "sdadaniel",
   "repository": {
     "type": "git",
     "url": "https://github.com/sdadaniel/harness.git"
@@ -22,66 +22,66 @@
   "contributes": {
     "commands": [
       {
-        "command": "agentsync.initProject",
+        "command": "harnessSync.initProject",
         "title": "Init .harness in Project",
-        "category": "AgentSync",
+        "category": "Harness Sync",
         "icon": "$(new-folder)"
       },
       {
-        "command": "agentsync.showPanel",
+        "command": "harnessSync.showPanel",
         "title": "Show Panel",
-        "category": "AgentSync",
+        "category": "Harness Sync",
         "icon": "$(layout-sidebar-left)"
       },
       {
-        "command": "agentsync.sync",
+        "command": "harnessSync.sync",
         "title": "Sync Skills & Agents",
-        "category": "AgentSync",
+        "category": "Harness Sync",
         "icon": "$(sync)"
       },
       {
-        "command": "agentsync.refresh",
+        "command": "harnessSync.refresh",
         "title": "Refresh",
-        "category": "AgentSync",
+        "category": "Harness Sync",
         "icon": "$(refresh)"
       },
       {
-        "command": "agentsync.openItem",
+        "command": "harnessSync.openItem",
         "title": "Open",
-        "category": "AgentSync"
+        "category": "Harness Sync"
       },
       {
-        "command": "agentsync.toggleTarget",
+        "command": "harnessSync.toggleTarget",
         "title": "Toggle Platform",
-        "category": "AgentSync"
+        "category": "Harness Sync"
       },
       {
-        "command": "agentsync.openSettingsTab",
+        "command": "harnessSync.openSettingsTab",
         "title": "Open Settings Tab",
-        "category": "AgentSync",
+        "category": "Harness Sync",
         "icon": "$(open-preview)"
       },
       {
-        "command": "agentsync.openDocs",
+        "command": "harnessSync.openDocs",
         "title": "Open Documentation",
-        "category": "AgentSync",
+        "category": "Harness Sync",
         "icon": "$(book)"
       }
     ],
     "configuration": {
-      "title": "AgentSync",
+      "title": "Harness Sync",
       "properties": {
-        "agentsync.harnessRoot": {
+        "harnessSync.harnessRoot": {
           "type": "string",
           "default": "",
           "description": "Project root containing .harness/. Empty = workspace folder."
         },
-        "agentsync.projectRoot": {
+        "harnessSync.projectRoot": {
           "type": "string",
           "default": "",
           "description": "Project root for installs. Empty = first workspace folder."
         },
-        "agentsync.scope": {
+        "harnessSync.scope": {
           "type": "string",
           "enum": [
             "project",
@@ -90,17 +90,17 @@
           "default": "project",
           "description": "Install skills/agents in the project or user home directory."
         },
-        "agentsync.targets.cursor": {
+        "harnessSync.targets.cursor": {
           "type": "boolean",
           "default": true,
           "description": "Sync to Cursor (.cursor/skills, .cursor/agents)."
         },
-        "agentsync.targets.claude": {
+        "harnessSync.targets.claude": {
           "type": "boolean",
           "default": true,
           "description": "Sync to Claude Code (.claude/skills, .claude/agents)."
         },
-        "agentsync.targets.codex": {
+        "harnessSync.targets.codex": {
           "type": "boolean",
           "default": true,
           "description": "Sync to Codex (.agents/skills, .codex/agents)."
@@ -110,51 +110,51 @@
     "viewsContainers": {
       "activitybar": [
         {
-          "id": "agentsync",
-          "title": "AgentSync",
-          "icon": "media/agentsync.svg"
+          "id": "harnessSync",
+          "title": "Harness Sync",
+          "icon": "media/harness.svg"
         }
       ]
     },
     "views": {
-      "agentsync": [
+      "harnessSync": [
         {
-          "id": "agentsync.settings",
+          "id": "harnessSync.settings",
           "name": "Settings",
           "type": "webview"
         },
         {
-          "id": "agentsync.registrations",
+          "id": "harnessSync.registrations",
           "name": "Installations"
         }
       ]
     },
     "viewsWelcome": [
       {
-        "view": "agentsync.registrations",
-        "contents": "Each project defines skills/agents in `.harness/`.\n[Init .harness](command:agentsync.initProject)\n[Sync Now](command:agentsync.sync)"
+        "view": "harnessSync.registrations",
+        "contents": "Each project defines skills/agents in `.harness/`.\n[Init .harness](command:harnessSync.initProject)\n[Sync Now](command:harnessSync.sync)"
       }
     ],
     "menus": {
       "view/title": [
         {
-          "command": "agentsync.openSettingsTab",
-          "when": "view == agentsync.settings",
+          "command": "harnessSync.openSettingsTab",
+          "when": "view == harnessSync.settings",
           "group": "navigation@1"
         },
         {
-          "command": "agentsync.openDocs",
-          "when": "view == agentsync.settings",
+          "command": "harnessSync.openDocs",
+          "when": "view == harnessSync.settings",
           "group": "navigation@2"
         },
         {
-          "command": "agentsync.sync",
-          "when": "view == agentsync.registrations",
+          "command": "harnessSync.sync",
+          "when": "view == harnessSync.registrations",
           "group": "navigation@1"
         },
         {
-          "command": "agentsync.refresh",
-          "when": "view == agentsync.registrations",
+          "command": "harnessSync.refresh",
+          "when": "view == harnessSync.registrations",
           "group": "navigation@2"
         }
       ]

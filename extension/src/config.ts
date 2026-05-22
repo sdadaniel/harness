@@ -8,7 +8,7 @@ const PLATFORMS: Platform[] = ["cursor", "claude", "codex"];
 export function getHarnessConfiguration(
   context: vscode.ExtensionContext
 ): HarnessConfig {
-  const cfg = vscode.workspace.getConfiguration("agentsync");
+  const cfg = vscode.workspace.getConfiguration("harnessSync");
   const projectRoot = resolveProjectRoot(cfg.get<string>("projectRoot", ""));
   const harnessRoot = resolveHarnessRoot(
     cfg.get<string>("harnessRoot", ""),
@@ -64,7 +64,7 @@ export async function setTargetEnabled(
   platform: Platform,
   enabled: boolean
 ): Promise<void> {
-  const cfg = vscode.workspace.getConfiguration("agentsync");
+  const cfg = vscode.workspace.getConfiguration("harnessSync");
   await cfg.update(
     `targets.${platform}`,
     enabled,
@@ -82,7 +82,7 @@ export async function initProjectHarness(projectRoot: string): Promise<void> {
   if (!fs.existsSync(readmePath)) {
     fs.writeFileSync(
       readmePath,
-      `# AgentSync
+      `# Harness Sync
 
 Define project-specific skills, agents, commands, and root instructions here.
 
@@ -91,7 +91,7 @@ Define project-specific skills, agents, commands, and root instructions here.
 - \`agents/*.md\` — subagents
 - \`commands/*.md\` — slash commands (/name)
 
-Run **AgentSync: Sync Skills & Agents** to install into Cursor, Claude Code, and Codex.
+Run **Harness Sync: Sync Skills & Agents** to install into Cursor, Claude Code, and Codex.
 `,
       "utf8"
     );
@@ -161,7 +161,7 @@ export function onConfigChange(
   listener: () => void
 ): vscode.Disposable {
   return vscode.workspace.onDidChangeConfiguration((e) => {
-    if (e.affectsConfiguration("agentsync")) {
+    if (e.affectsConfiguration("harnessSync")) {
       listener();
     }
   });
